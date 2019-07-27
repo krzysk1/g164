@@ -1,6 +1,76 @@
 <[file][][]
     <[modelmanager][][]
         <[pointer_list_tmcontrol][ControlObjects][]
+ 			// pressure setting
+            <[control_cylinder][PressureSetting][2]
+                <[string8][Type][knob]>
+                <[vector3_float64][R0][ -0.9306 -0.1278 0.549 ]>
+                <[matrix3_float64][B0][ 1.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 1.0 ]>
+                <[vector3_float64][Direction][ 1.0 0.0 0.0 ]>
+                <[float64][StepAngle][0.02]>
+                <[control_message][OnRotate][]
+                    <[string8][Message][PressureSetting]>
+                    <[string8][Qualifiers][step]>
+                    <[float64][Value][1.0]>
+                >
+                <[float64][Radius][0.004]>
+                <[float64][Length][0.011]>
+            >
+			// map zoom			
+            <[control_box][MapZoomKnob][85]
+                <[string8][Type][knob]>
+                <[vector3_float64][R0][-0.9983 0.0366 0.7675]>
+                <[matrix3_float64][B0][ 1.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 1.0 ]>
+                <[vector3_float64][Direction][ 1.0 0.0 0.0 ]>
+                <[float64][StepAngle][0.3]>			
+                <[control_message][OnRotate][]
+                    <[string8][Message][GPS.Zoom]>
+                    <[string8][Qualifiers][step]>
+                    <[float64][Value][0.2]>
+                >
+                <[vector3_float64][Dimensions][0.01 0.1634 0.1247]>
+            >			
+            // stick
+            <[control_input][ElevatorTravel][]
+                <[uint32][InputID][ServoElevatorPosition.Output]>
+                <[float64][Scaling][0.149066]>
+            >
+            <[control_input][AileronTravel][]
+                <[uint32][InputID][ServoAileronPosition.Output]>
+                <[float64][Scaling][0.149066]>
+            >
+            <[control_rotation][StickElevatorRotation][]
+                <[string8][Input][ElevatorTravel.Output]>
+                <[tmvector3d][Axis][0.0 1.0 0.0]>
+                <[tmvector3d][Pivot][-1.103 0 -0.06]>
+            >
+            <[control_rotation][StickTransform][]
+                <[string8][Input][AileronTravel.Output]>
+                <[tmvector3d][Axis][1.0 0.0 0.0]>
+                <[tmvector3d][Pivot][-1.103 0 -0.06]>
+                <[string8][InputTransform][StickElevatorRotation.Output]>
+            >
+            <[control_cylinder][StickGrip][114]
+                <[string8][Type][stick]>
+                <[vector3_float64][R0][ -1.1145 0.0 0.4141 ]>
+                <[matrix3_float64][B0][ 0.0  0.0  1.0  0.0  1.0  0.0 -1.0  0.0 0.0 ]>
+                <[vector3_float64][Direction] [ 1.0  0.0 0.0 ]>
+                <[vector3_float64][Direction2][ 0.0 -1.0 0.0 ]>
+                <[float64][StepDistance][0.00005]>
+                <[string8][InputTransform][StickTransform.Output]>
+                <[control_message][OnStep][]
+                    <[string8][Message][Controls.Pitch.Input]>
+                    <[string8][Qualifiers][step]>
+                    <[float64][Value][0.0012]>
+                >
+                <[control_message][OnRotate][]
+                    <[string8][Message][Controls.Roll.Input]>
+                    <[string8][Qualifiers][step]>
+                    <[float64][Value][10.0]>
+                >
+                <[float64][Radius][0.02]>
+                <[float64][Length][0.10]>
+            >			
         >
     >
 >

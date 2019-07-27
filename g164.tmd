@@ -1042,7 +1042,7 @@
             <[input_discrete][GPSZoom][]
                 <[string8][Input][GPS.Zoom]>
                 <[string8][InputEnable][GPSOn.Output]>
-                <[tmvector2d][Range][ -4.0 8.0 ]>
+                <[tmvector2d][Range][ -2.0 8.0 ]>
                 <[float64][Value][2.0]>
             >
             <[output_free][GPSZoomOutput][]
@@ -1501,7 +1501,7 @@
 			
 			// GPS display
             <[graphics_input_color][InstrumentLightingGPS][]
-                <[uint32][InputID][1]>
+                <[uint32][InputID][GPSOn.Output]>
                 <[tmvector3d][Color][ 500.0 500.0 500.0 ]>
             >
             <[rigidbodygraphics][GPSDisplay][]
@@ -1509,15 +1509,15 @@
                 <[uint32][OrientationID][Fuselage.Q]>
                 <[string8][GeometryList][ gps_screen ]>
                 <[string8][InputIllumination0][InstrumentLightingGPS.Output]>
-            >
-            <[graphics_input][GPSZoom][]
-                <[uint32][InputID][GPSZoom.Output]>
             >			
             <[texture_animation][DisplayTexture][]
                 <[string8][TextureName][display_color]>
                 <[tmvector4d][ClearColor][ 0.03 0.03 0.03 1.0 ]>				
                 <[string8][RenderList][ DisplayMap.Render DisplayMapOverlay.Render ]>
             >
+            <[graphics_input][GPSZoom][]
+                <[uint32][InputID][GPSZoom.Output]>
+            >			
             <[texture_animation_map_display][DisplayMap][]
                 <[uint32][PositionID][Fuselage.R]>
                 <[uint32][OrientationID][Fuselage.Q]>
